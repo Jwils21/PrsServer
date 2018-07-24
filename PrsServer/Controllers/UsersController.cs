@@ -6,12 +6,27 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace PrsServer.Controllers
 {
+	[EnableCors(origins:"*", headers: "*", methods: "*")]
     public class UsersController : ApiController
     {
 		private PrsDbContext db = new PrsDbContext();
+
+		//Authenticate user
+		[HttpGet]
+		public JsonResponse Authenticate(string username, string password) {
+			if(username == null || password == null) {
+				return new JsonResponse {Result = "Failed", Message = "Authentication failed"};}
+			var user = db.Users.SingleOrDefault(u => u.UserName == username && u.Password == password);
+			if(user == null) {
+				return new JsonResponse { Result = "Failed", Message = "Authentication failed" };
+			}
+			return new JsonResponse { Data = user };
+		}
+
 
 		//GET-ALL
 		//indicates that a get method will be used to get this info vs. post which updates

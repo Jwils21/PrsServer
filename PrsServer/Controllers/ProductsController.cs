@@ -6,10 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace PrsServer.Controllers
 {
-    public class ProductsController : ApiController
+	[EnableCors(origins: "*", headers: "*", methods: "*")]
+	public class ProductsController : ApiController
     {
 		private PrsDbContext db = new PrsDbContext();
 
@@ -68,6 +70,7 @@ namespace PrsServer.Controllers
 		[HttpPost]
 		[ActionName("Change")]
 		public JsonResponse Change(Product product) {
+			product.Vendor = null;
 			if(product == null) {
 				return new JsonResponse {
 					Result = "Failed",

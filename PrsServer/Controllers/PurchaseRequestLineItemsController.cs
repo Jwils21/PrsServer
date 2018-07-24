@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace PrsServer.Controllers
 {
+	[EnableCors(origins: "*", headers: "*", methods: "*")]
 	public class PurchaseRequestLineItemsController: ApiController 
 	{
 
@@ -71,6 +73,8 @@ namespace PrsServer.Controllers
 		[HttpPost]
 		[ActionName("Change")]
 		public JsonResponse Change(PurchaseRequestLineItem purchaseRequestLineItem) {
+			purchaseRequestLineItem.Product = null;
+			purchaseRequestLineItem.PurchaseRequest = null;
 			if(purchaseRequestLineItem == null) {
 				return new JsonResponse {
 					Result = "Failed",

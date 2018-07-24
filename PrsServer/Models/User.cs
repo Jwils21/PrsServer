@@ -10,7 +10,6 @@ namespace PrsServer.Models {
 		public int Id { get; set; }
 		[Required]
 		[Index(IsUnique = true)]
-		[MinLength(6)]
 		[StringLength(30)]
 		public string UserName { get; set; }
 		[Required]
