@@ -27,6 +27,8 @@ namespace PrsServer.Models {
 		public int UserId { get; set; }
 		public virtual User User { get; set; }
 
+		public virtual List<PurchaseRequestLineItem> PurchaseRequestLineitems { get; set; }
+
 		public PurchaseRequest() { }
 
 	}

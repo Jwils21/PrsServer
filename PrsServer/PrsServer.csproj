@@ -237,6 +237,10 @@
     <Compile Include="Migrations\201807241823210_updated username string length.Designer.cs">
       <DependentUpon>201807241823210_updated username string length.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807251845411_added list of prlis to PR model.cs" />
+    <Compile Include="Migrations\201807251845411_added list of prlis to PR model.Designer.cs">
+      <DependentUpon>201807251845411_added list of prlis to PR model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PrsDbContext.cs" />
@@ -357,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807241823210_updated username string length.resx">
       <DependentUpon>201807241823210_updated username string length.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807251845411_added list of prlis to PR model.resx">
+      <DependentUpon>201807251845411_added list of prlis to PR model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

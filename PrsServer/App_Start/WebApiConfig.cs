@@ -12,6 +12,12 @@ namespace PrsServer {
 			config.MapHttpAttributeRoutes();
 
 			config.Routes.MapHttpRoute(
+				name: "AuthApi",
+				routeTemplate: "{controller}/{action}/{username}/{password}",
+				defaults: new { id = RouteParameter.Optional }
+			);
+
+			config.Routes.MapHttpRoute(
 				name: "DefaultApi",
 				routeTemplate: "{controller}/{action}/{id}",
 				defaults: new { id = RouteParameter.Optional }

@@ -17,12 +17,13 @@ namespace PrsServer.Controllers
 
 		//Authenticate user
 		[HttpGet]
+		[ActionName("Authenticate")]
 		public JsonResponse Authenticate(string username, string password) {
 			if(username == null || password == null) {
-				return new JsonResponse {Result = "Failed", Message = "Authentication failed"};}
+				return new JsonResponse {Result = "Failed", Message = "Authentication Failed: No Username or Password"};}
 			var user = db.Users.SingleOrDefault(u => u.UserName == username && u.Password == password);
 			if(user == null) {
-				return new JsonResponse { Result = "Failed", Message = "Authentication failed" };
+				return new JsonResponse { Result = "Failed", Message = "Authentication Failed: Incorrect Username/Password" };
 			}
 			return new JsonResponse { Data = user };
 		}
